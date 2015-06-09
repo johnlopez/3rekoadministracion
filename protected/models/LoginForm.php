@@ -7,8 +7,8 @@
  */
 class LoginForm extends CFormModel
 {
-	public $username;
-	public $password;
+	public $usuario;
+	public $clave;
 	public $rememberMe;
 
 	private $_identity;
@@ -22,11 +22,11 @@ class LoginForm extends CFormModel
 	{
 		return array(
 			// username and password are required
-			array('username, password', 'required'),
+			array('usuario, clave', 'required'),
 			// rememberMe needs to be a boolean
 			array('rememberMe', 'boolean'),
 			// password needs to be authenticated
-			array('password', 'authenticate'),
+			array('clave', 'authenticate'),
 		);
 	}
 
@@ -48,9 +48,9 @@ class LoginForm extends CFormModel
 	{
 		if(!$this->hasErrors())
 		{
-			$this->_identity=new UserIdentity($this->username,$this->password);
+			$this->_identity=new UserIdentity($this->usuario,$this->clave);
 			if(!$this->_identity->authenticate())
-				$this->addError('password','Incorrect username or password.');
+				$this->addError('clave','Incorrect usuario or clave.');
 		}
 	}
 
@@ -62,7 +62,7 @@ class LoginForm extends CFormModel
 	{
 		if($this->_identity===null)
 		{
-			$this->_identity=new UserIdentity($this->username,$this->password);
+			$this->_identity=new UserIdentity($this->usuario,$this->clave);
 			$this->_identity->authenticate();
 		}
 		if($this->_identity->errorCode===UserIdentity::ERROR_NONE)
