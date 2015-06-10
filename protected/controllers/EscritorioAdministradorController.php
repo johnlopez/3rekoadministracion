@@ -19,11 +19,11 @@ class EscritorioAdministradorController extends Controller
 		);
 	}
 
-	// /**
-	//  * Specifies the access control rules.
-	//  * This method is used by the 'accessControl' filter.
-	//  * @return array access control rules
-	//  */
+	/**
+	 * Specifies the access control rules.
+	 * This method is used by the 'accessControl' filter.
+	 * @return array access control rules
+	 */
 	public function accessRules()
 	{
 		return array(
